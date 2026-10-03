@@ -1,0 +1,63 @@
+Toy Attention Learning Experiment
+=================================
+
+Task:
+Predict the average of the final two values in a synthetic sequence.
+
+Sequence length:
+6
+
+Training samples:
+240
+
+Validation samples:
+60
+
+Attention:
+First-principles scaled dot-product attention.
+
+Training:
+100 epochs
+
+Learning rate:
+0.05
+
+Trainable component:
+Output prediction head.
+
+Attention projections:
+Fixed during this experiment.
+
+Results:
+
+Epoch 10:
+Train MSE = 0.624928
+Validation MSE = 0.542871
+Validation MAE = 0.596022
+
+Epoch 50:
+Train MSE = 0.576582
+Validation MSE = 0.521620
+Validation MAE = 0.585334
+
+Epoch 100:
+Train MSE = 0.527566
+Validation MSE = 0.496329
+Validation MAE = 0.569101
+
+Final Validation MAE:
+0.569101
+
+Final Validation RMSE:
+0.704507
+
+Observation:
+The validation loss and MAE decreased consistently during training,
+showing that the attention representation can participate in a
+learning pipeline. Convergence was gradual rather than unstable.
+
+Limitation:
+The attention projection matrices were fixed and only the output
+prediction head was optimized. Therefore, this experiment demonstrates
+learning on top of attention rather than end-to-end optimization of
+all attention parameters.

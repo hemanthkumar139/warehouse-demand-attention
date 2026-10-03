@@ -1,0 +1,23 @@
+Gradient Verification Results
+=============================
+
+Parameter verified:
+W_V
+
+Loss:
+L = 1/2 * sum(Y^2)
+
+Maximum absolute difference:
+2.4714008617365835e-11
+
+Relative difference:
+4.805629992623409e-12
+
+Gradient check passed:
+True
+
+Interpretation:
+The analytical gradient of W_V closely matches the independently
+computed numerical finite-difference gradient. The extremely small
+difference provides evidence that the implemented forward computation
+and analytical derivative with respect to W_V are correct.

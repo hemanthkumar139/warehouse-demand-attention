@@ -1,0 +1,44 @@
+Scaled vs Unscaled Attention Ablation
+=====================================
+
+Hypothesis:
+Scaling QK^T by sqrt(d_k) should reduce the magnitude of attention
+logits and reduce softmax saturation, especially for larger d_k.
+
+Results:
+
+d_k=4
+Scaled entropy: 0.1636
+Unscaled entropy: 0.1356
+Unscaled max attention: approximately 1.0
+
+d_k=16
+Scaled entropy: 0.1449
+Unscaled entropy: 0.0170
+Unscaled max attention: 1.0
+
+d_k=64
+Scaled entropy: 0.1491
+Unscaled entropy: 0.0012
+Unscaled max attention: 1.0
+
+d_k=128
+Scaled entropy: 0.0427
+Unscaled entropy: 0.0587
+Unscaled max attention: 1.0
+
+Observation:
+For d_k=16 and d_k=64, unscaled attention produced substantially
+larger logits and much lower attention entropy than scaled attention.
+This indicates stronger softmax concentration and potential saturation.
+
+Interpretation:
+The dot product QK^T tends to grow in magnitude as the key/query
+dimension increases. Dividing by sqrt(d_k) controls this growth before
+softmax, keeping the logits in a more manageable range.
+
+Limitation:
+The random initialization creates variability, and the d_k=128 result
+does not show a simple monotonic entropy relationship. Therefore the
+evidence supports reduced logit growth and often reduced saturation,
+rather than a claim that scaling always produces higher entropy.

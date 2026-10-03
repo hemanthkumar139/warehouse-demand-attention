@@ -1,0 +1,39 @@
+Distribution Shift Experiment
+==============================
+
+Original distribution:
+Noise standard deviation = 5
+Spike probability = 0.01
+Spike scale = 50
+
+Shifted distribution:
+Noise standard deviation = 15
+Spike probability = 0.03
+Spike scale = 100
+
+Last-value baseline:
+
+Original:
+MAE  = 7.6552
+RMSE = 11.0973
+
+Shifted:
+MAE  = 21.4833
+RMSE = 31.0841
+
+Change:
+MAE increase  = 13.8281
+RMSE increase = 19.9868
+
+Interpretation:
+The shifted distribution contains substantially more noise and larger,
+more frequent demand spikes. The baseline error increased substantially
+under this distribution shift.
+
+The increase in RMSE is particularly notable because RMSE penalizes
+large errors more strongly than MAE. Larger spikes therefore have a
+greater effect on RMSE.
+
+Conclusion:
+The experiment demonstrates that even a simple strong baseline can
+degrade substantially when the statistical properties of demand change.
